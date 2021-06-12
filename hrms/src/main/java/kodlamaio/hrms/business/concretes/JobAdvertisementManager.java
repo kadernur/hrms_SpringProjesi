@@ -57,7 +57,8 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 	public DataResult<List<JobAdvertisementDto>> getAllSortedByReleaseDate() {
 		Sort sort = Sort.by(Sort.Direction.DESC,"appealDeadline");
 		
-		return new SuccessDataResult<List<JobAdvertisementDto>>(this.dtoGenerator(this.jobAdvertisementDao.findAll(sort)));
+		return new SuccessDataResult<List<JobAdvertisementDto>>
+		(this.dtoGenerator(this.jobAdvertisementDao.findAll(sort)));
 	}
 	
 	
@@ -152,6 +153,17 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 		return new SuccessDataResult<List<JobAdvertisementDto>>(this.dtoGenerator(this.jobAdvertisementDao.getByIsActive()),"All active advertisement listed !");
 	
 	
+	}
+
+
+
+
+	@Override
+	public Result delete(JobAdvertisement jobAdvertisement) {
+
+		this.jobAdvertisementDao.delete(jobAdvertisement);
+
+		return new SuccessResult("Job Advertisement deleted !");
 	}
 	
 	

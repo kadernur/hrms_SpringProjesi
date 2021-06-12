@@ -10,6 +10,7 @@ import kodlamaio.hrms.dataAccess.abstracts.UserDao;
 
 public class UserManager implements UserService {
 	
+	@SuppressWarnings("unused")
 	private UserDao userDao;
 
 	

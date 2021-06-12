@@ -73,10 +73,16 @@ public class JobAdvertisementController {
 	}
 	
 
-	//@PostMapping("/update")  // yanlış. ama şimdilik kalsın.
+	//@PostMapping("/update") 
 	//public Result update(@RequestBody JobAdvertisement jobAdvertisement) {
 	//	return this.jobAdvertisementService.update(jobAdvertisement);
 	//}
+	
+	
+	@PostMapping("/delete")
+	public Result delete(@RequestBody JobAdvertisement jobAdvertisement) {
+		return this.jobAdvertisementService.delete(jobAdvertisement);
+	}
 	
 	
 }

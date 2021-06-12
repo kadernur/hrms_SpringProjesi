@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = false)
 
 //extend ettiğimiz sınıfın özelliklerini kapsar.
-@PrimaryKeyJoinColumn(name="user_id",referencedColumnName = "id")
+@PrimaryKeyJoinColumn(name="id",referencedColumnName = "id")
 
 
 public class Employee extends User{

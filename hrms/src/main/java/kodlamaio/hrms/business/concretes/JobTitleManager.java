@@ -33,7 +33,8 @@ public class JobTitleManager implements JobTitleService {
 	
 	@Override
 	public DataResult<List<JobTitle>> getAll() {
-		return new SuccessDataResult<List<JobTitle>>(this.jobtitleDao.findAll());
+		return new SuccessDataResult<List<JobTitle>>
+		(this.jobtitleDao.findAll());
 		
 	}
 	
@@ -65,6 +66,34 @@ public class JobTitleManager implements JobTitleService {
 		}
 		return true;
 		
+	}
+
+
+
+
+	@SuppressWarnings("deprecation")
+	@Override
+	public DataResult<JobTitle> getJobTitleById(int jobTitleId) {
+		return new SuccessDataResult<JobTitle>
+		(this.jobtitleDao.getOne(jobTitleId));
+	}
+
+
+
+
+	@Override
+	public Result update(JobTitle jobTitle) {
+		this.jobtitleDao.save(jobTitle);
+		return new SuccessResult("JobTitle updated. ");
+	}
+
+
+
+
+	@Override
+	public Result delete(JobTitle jobTitle) {
+		this.jobtitleDao.delete(jobTitle);
+		return new SuccessResult("JobTitle deleted. ");
 	}
 
 }

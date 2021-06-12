@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kodlamaio.hrms.business.abstracts.EmployerSevice;
+import kodlamaio.hrms.business.abstracts.EmployerService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.ErrorResult;
 import kodlamaio.hrms.core.utilities.results.Result;
@@ -18,7 +18,7 @@ import kodlamaio.hrms.entities.concretes.Employer;
 
 @Service("EmployerManager")
 
-public class EmployerManager  implements EmployerSevice{
+public class EmployerManager  implements EmployerService{
 	
 	private EmployerDao employerDao;
 	
@@ -31,9 +31,13 @@ public class EmployerManager  implements EmployerSevice{
 
 	@Override
 	public DataResult<List<Employer>> getAll() {
+		
+		
 		return new SuccessDataResult<List<Employer>>(this.employerDao.findAll());
 	}
 
+	
+	
 	@Override
 	public Result add(Employer employer) {
 		if(!this.checkIfEmailExists(employer.getEmail())) {
@@ -93,6 +97,28 @@ public class EmployerManager  implements EmployerSevice{
 	public DataResult<Employer> getEmail(String email) {
 		
 		return new SuccessDataResult<Employer>(this.employerDao.findByEmail(email));
+	}
+
+	
+	
+	@Override
+	public DataResult<Employer> getById(int id) {
+		return new SuccessDataResult<Employer>
+		(this.employerDao.findById(id).orElse(null));
+	
+	
+	}
+
+	@Override
+	public Result update(Employer employer) {
+		this.employerDao.save(employer);
+		return new SuccessResult("Employer updated. ");
+	}
+
+	@Override
+	public Result delete(Employer employer) {
+		this.employerDao.delete(employer);
+		return new SuccessResult("Employer deleted. ");
 	}
 	
 	

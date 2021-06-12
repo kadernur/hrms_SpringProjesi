@@ -44,4 +44,14 @@ public class JobTitlesController {
 		return this.jobTitleService.add(jobTitle);
 	}
 
+	
+	@PostMapping("/update")
+	public Result update(@RequestBody JobTitle jobTitle) {
+		return this.jobTitleService.update(jobTitle);
+	}
+	
+	@PostMapping("/delete")
+	public Result delete(@RequestBody JobTitle jobTitle) {
+		return this.jobTitleService.delete(jobTitle);
+	}
 }

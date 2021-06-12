@@ -18,8 +18,13 @@ public interface JobAdvertisementService {
 	
 	DataResult<List<JobAdvertisementDto>> getAllByEmployerId(int employerId);
 
-	Result update(JobAdvertisement jobAdvertisement);
+	
 	
 	Result toggleActive(int jobId);
+	
+
+	Result update(JobAdvertisement jobAdvertisement);
+	
+	Result delete(JobAdvertisement jobAdvertisement);
 
 }

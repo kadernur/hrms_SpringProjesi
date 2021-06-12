@@ -8,6 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sun.istack.Nullable;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -38,13 +42,20 @@ public class VerificationCode {
 	@Column(name="expired_date")
 	private LocalDate expiredDate;
 	
+	
+	@NotNull
 	@Column(name="is_activate",columnDefinition = "boolean default false")
 	private Boolean isActivate;
 	
 	
+	
+	@NotNull
 	@Column(name="is_deleted",columnDefinition = "boolean default false")
+	@JsonIgnore
 	private Boolean isDeleted=false;
 	
+	
+	@Nullable
 	@Column(name="confirmed_date")
 	private LocalDate confirmedDate;
 	

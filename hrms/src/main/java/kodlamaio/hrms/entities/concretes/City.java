@@ -10,7 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 
@@ -35,13 +37,14 @@ public class City {
 
 	
 	@Column(name="name")
-	//@NotBlank
+	@NotBlank
 	@NotNull
 	private String name;
 	
 	@Column(name="created_date")
 	private LocalDate createdDate= LocalDate.now();
 	
+	@JsonIgnore
 	@Column(name="is_deleted", columnDefinition = "boolean default false")
 	private Boolean isDeleted=false;
 	

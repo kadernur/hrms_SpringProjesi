@@ -15,6 +15,7 @@ public class VerificationManager  implements VerificationService{
 		
 		UUID uuid=UUID.randomUUID();
 		
+		@SuppressWarnings("unused")
 		String verificationLink ="https://hrmsverificationmail/" + uuid.toString();
 		
 	}

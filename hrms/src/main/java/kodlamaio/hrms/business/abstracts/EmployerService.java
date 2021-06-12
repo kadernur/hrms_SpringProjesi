@@ -6,7 +6,7 @@ import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.concretes.Employer;
 
-public interface EmployerSevice {
+public interface EmployerService {
 	
 	
 	DataResult<List<Employer>> getAll();
@@ -16,6 +16,10 @@ public interface EmployerSevice {
 	
 	DataResult<Employer> getEmail(String email);
 	
-	
+	DataResult<Employer> getById(int id);
 
+
+	Result update(Employer employer);
+	
+	Result delete(Employer employer);
 }

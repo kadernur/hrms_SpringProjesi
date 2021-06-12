@@ -1,13 +1,17 @@
 package kodlamaio.hrms.business.abstracts;
 
 import kodlamaio.hrms.core.utilities.results.Result;
-import kodlamaio.hrms.entities.concretes.Candidate;
-import kodlamaio.hrms.entities.concretes.Employer;
+
+
+import kodlamaio.hrms.entities.dtos.RegisterForCandidateDto;
+import kodlamaio.hrms.entities.dtos.RegisterForEmployerDto;
 
 public interface AuthService {
 	
-	Result registerEmployer( Employer employer,String confirmedPassword);
-	Result registerCandidate(Candidate candidate,String confirmedPassword);
-	Result verifyEmail(int user_id,String activationCode);
-
+	
+		Result registerEmployer(RegisterForEmployerDto registerForEmployerDto);
+	   
+	   Result registerCandidate(RegisterForCandidateDto registerForCandidateDto);
+	   
+	   Result verifyEmail(int user_id, String activationCode);
 }

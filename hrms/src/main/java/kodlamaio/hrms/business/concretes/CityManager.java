@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.CityService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
+import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
+import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.CityDao;
 import kodlamaio.hrms.entities.concretes.City;
 
@@ -38,12 +40,45 @@ public class CityManager implements CityService {
 	
 	
 
+	
 	@SuppressWarnings("deprecation")
 	@Override
 	public DataResult<City> getCityById(int cityId) {
-		return new SuccessDataResult<City>
-		(this.cityDao.getOne(cityId));
 		
+		return new SuccessDataResult<City>(this.cityDao.getOne(cityId));
+		
+	}
+
+
+
+
+	@Override
+	public Result add(City city) {
+		
+		this.cityDao.save(city);
+
+		return new SuccessResult("City added !");
+	}
+
+
+
+
+	@Override
+	public Result update(City city) {
+		this.cityDao.save(city);
+
+		return new SuccessResult("City updated !");
+	}
+
+
+
+
+	@Override
+	public Result delete(City city) {
+		
+		this.cityDao.delete(city);
+
+		return new SuccessResult("City deleted !");
 	}
 
 	
